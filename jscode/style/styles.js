@@ -65,6 +65,32 @@ export default StyleSheet.create({
     height: 60
   },
 
+  rowBack: {
+    alignItems: 'center',
+    backgroundColor: '#DDD',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingLeft: 15,
+  },
+  backRightBtn: {
+    alignItems: 'center',
+    bottom: 0,
+    justifyContent: 'center',
+    position: 'absolute',
+    top: 0,
+    width: 75
+  },
+  backRightBtnLeft: {
+    backgroundColor: 'blue',
+    right: 75
+  },
+  backRightBtnRight: {
+    backgroundColor: 'red',
+    right: 0
+  },
+
+
   centered: {
     justifyContent: "center",
     alignItems: "center"

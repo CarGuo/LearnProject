@@ -118,7 +118,7 @@ class TabListPage extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <ListView
+        <SwipeListView
           removeClippedSubviews={false}//配合swiper使用，不设置的话，作为listview的header会不被绘制
           ref="list"
           refreshControl={<RefreshControl
