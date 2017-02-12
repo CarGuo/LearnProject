@@ -18,6 +18,7 @@ import ListViewItem from './widget/listItem';
 import Slider from './widget/slide';
 
 import {SwipeListView, SwipeRow} from 'react-native-swipe-list-view';
+import ModalBox from 'react-native-modalbox';
 
 import styles from '../style/styles';
 
@@ -46,6 +47,7 @@ class TabListPage extends Component {
     return (
       <ListViewItem
         data={rowData}
+        clickItem={this._clickItem.bind(this, rowID)}
       />
     );
   };
@@ -115,6 +117,13 @@ class TabListPage extends Component {
     }, 2500);
   }
 
+  /**
+   * 列表item点击
+   * */
+  _clickItem(rowId) {
+    this.refs.modal.open();
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -138,6 +147,20 @@ class TabListPage extends Component {
 
           onEndReached={this._loadMore.bind(this)}
         />
+
+        <ModalBox style={[styles.modal,styles.centered]}
+                  ref={"modal"}
+                  backButtonClose={true}
+                  backdropPressToClose={true}
+                  animationDuration={300}
+                  backdrop={true}
+                  backdropOpacity={0.4}
+        >
+          <Text
+            style={[styles.centered, {color:'white'}]}>
+            测试模态框。
+          </Text>
+        </ModalBox>
       </View>
     );
   }

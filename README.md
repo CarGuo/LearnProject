@@ -18,3 +18,4 @@
 * [react-native-swipe-list-view](https://github.com/jemise111/react-native-swipe-list-view)
 * [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
 * [redux-thunk](https://github.com/gaearon/redux-thunk)
+* [react-native-modalbox](https://github.com/maxs15/react-native-modalbox)

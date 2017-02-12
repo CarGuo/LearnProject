@@ -81,15 +81,24 @@ export default StyleSheet.create({
     top: 0,
     width: 75
   },
+
   backRightBtnLeft: {
     backgroundColor: 'blue',
     right: 75
   },
+
   backRightBtnRight: {
     backgroundColor: 'red',
     right: 0
   },
 
+  modal: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 100,
+    width: 100,
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+  },
 
   centered: {
     justifyContent: "center",

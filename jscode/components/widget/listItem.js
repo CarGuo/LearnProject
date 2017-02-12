@@ -36,7 +36,7 @@ class ListItem extends Component {
           </TouchableHighlight>
         </View>
         <TouchableHighlight
-          onPress={ () => alert("your click item " + this.props.data)}
+          onPress={ this.props.clickItem}
           underlayColor={'#C9C9C9'}>
           <View
             style={styles.listRowItem}>
