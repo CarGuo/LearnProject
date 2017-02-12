@@ -19,6 +19,7 @@ import Slider from './widget/slide';
 
 import {SwipeListView, SwipeRow} from 'react-native-swipe-list-view';
 import ModalBox from 'react-native-modalbox';
+import Spinner from 'react-native-spinkit';
 
 import styles from '../style/styles';
 
@@ -121,7 +122,8 @@ class TabListPage extends Component {
    * 列表item点击
    * */
   _clickItem(rowId) {
-    this.refs.modal.open();
+    let modal = (rowId % 2 === 0) ? this.refs.modal : this.refs.modalLoad;
+    modal.open();
   }
 
   render() {
@@ -160,6 +162,19 @@ class TabListPage extends Component {
             style={[styles.centered, {color:'white'}]}>
             测试模态框。
           </Text>
+        </ModalBox>
+
+        <ModalBox style={[styles.modal,styles.centered]}
+                  ref={"modalLoad"}
+                  backButtonClose={true}
+                  backdropPressToClose={true}
+                  animationDuration={300}
+                  backdrop={true}
+                  backdropOpacity={0.4}
+        >
+          <Spinner style={[styles.centered]}
+                   isVisible={true}
+                   size={50} type="9CubeGrid" color="#FFFFFF"/>
         </ModalBox>
       </View>
     );
