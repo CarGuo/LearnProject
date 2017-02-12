@@ -19,6 +19,7 @@ export default class Counter extends Component {
   }
 
   render() {
+    //这两个方法函数，是从父类传递进来的，父类从actions/counter.js获取到
     const { counter, increment, decrement } = this.props;
 
     return (

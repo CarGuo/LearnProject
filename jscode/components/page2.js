@@ -16,15 +16,19 @@ class Page2 extends Component {
     return (
       <Counter
         counter={state.count}
+        //直接展开绑定的action，作为counter的props传递进去
         {...actions} />
     );
   }
 }
 
+//
 export default connect(state => ({
-    state: state.counter
+    state: state.counter //这个是reducers/index下的counter,关联page的state
   }),
+  //把
   (dispatch) => ({
+    //将../actions/counter下的所有action绑定到actions
     actions: bindActionCreators(counterActions, dispatch)
   })
 )(Page2);
