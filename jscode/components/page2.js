@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+
+import {bindActionCreators} from 'redux';
+import Counter from '../components/widget/counter';
+import * as counterActions from '../actions/counter';
+import { connect } from 'react-redux';
 
 class Page2 extends Component {
 
@@ -12,15 +12,19 @@ class Page2 extends Component {
   }
 
   render() {
+    const { state, actions } = this.props;
     return (
-      <View style={{flex: 1}}>
-        <View style={{flex: 1, justifyContent:"center", alignItems:"center"}}>
-          <Text style={{fontSize:30}}>waiting for...</Text>
-        </View>
-      </View>
+      <Counter
+        counter={state.count}
+        {...actions} />
     );
   }
 }
 
-
-export default Page2
+export default connect(state => ({
+    state: state.counter
+  }),
+  (dispatch) => ({
+    actions: bindActionCreators(counterActions, dispatch)
+  })
+)(Page2);

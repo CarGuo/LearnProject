@@ -6,13 +6,29 @@ import {
     AppRegistry,
     StyleSheet,
 } from 'react-native';
+import { Provider } from 'react-redux';
+
+import configureStore from './jscode/store/index';
+
+
+let store = configureStore();
 
 import * as RouterUtils from './jscode/common/router';
 
 class home extends Component {
-    render() {
+
+  constructor(){
+    super();
+    this.state = {
+      store: configureStore()
+    }
+  }
+
+  render() {
         return (
-          RouterUtils.getRouter()
+          <Provider store={this.state.store}>
+            {RouterUtils.getRouter()}
+          </Provider>
         );
     }
 }

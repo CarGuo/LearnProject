@@ -1,7 +1,7 @@
 
 import { combineReducers } from 'redux';
-import userReducer from './page1';
+import counter from './counter';
 
 export default combineReducers({
-	userStore: userReducer,
+  counter: counter,
 });

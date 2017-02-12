@@ -23,7 +23,7 @@ import {tabIconSize} from '../../style/styles'
 
 const config = {
   ['列表']: 'rocket',
-  ['等待']: 'facebook',
+  ['第二']: 'facebook',
 };
 
 const propTypes = {

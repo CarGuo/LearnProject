@@ -50,6 +50,7 @@ export const getRouter = () => {
               height:tabBarHeight,
               alignItems: 'center',
               justifyContent: 'center',
+              backgroundColor:'#f9f9f9'
               }}>
             <Scene
               key="tabListPage"
@@ -59,11 +60,11 @@ export const getRouter = () => {
               tabName="列表"
             />
             <Scene
-              key="tab1_2"
+              key="page2"
               component={Page2}
               icon={TabIcon}
-              tabName="等待"
-              title="等待2"
+              tabName="第二"
+              title="第二页"
             />
           </Scene>
         </Scene>
