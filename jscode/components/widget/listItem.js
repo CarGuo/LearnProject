@@ -16,20 +16,33 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 
 class ListItem extends Component {
 
+  /**
+   * 定义后，因为父空间定义getChildContext();
+   * 这里即可以通过this.context引用到父空间的方法。
+   *
+   * 而且ListItem的子控件也可以通过this.context.引用到
+   * */
+  static contextTypes = {
+    modalOpen: React.PropTypes.func.isRequired,
+  };
+
   render() {
 
     let iconSize = listItemHeight - 10;
 
     return (
       <SwipeRow
-        leftOpenValue={20 + Math.random() * 150}
+        leftOpenValue={80}
         rightOpenValue={-150}
       >
         <View style={styles.rowBack}>
           <Text style={{color:'#885ff3'}}>左边</Text>
-          <View style={[styles.backRightBtn, styles.backRightBtnLeft]}>
-            <Text style={{color: 'white'}}>右键</Text>
-          </View>
+
+          <TouchableHighlight style={[styles.backRightBtn, styles.backRightBtnLeft]}
+            onPress={() => { this.context.modalOpen();}}>
+            <Text style={{color: 'black'}}>右键</Text>
+          </TouchableHighlight>
+
           <TouchableHighlight style={[styles.backRightBtn, styles.backRightBtnRight]}
                               onPress={() => alert("you click delete item " + this.props.data)}>
             <Text style={{color: 'white'}}>删除</Text>

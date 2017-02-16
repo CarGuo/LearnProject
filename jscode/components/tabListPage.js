@@ -37,6 +37,7 @@ class TabListPage extends Component {
     //设置state
     this.state = {
       isRefresh: false,
+      isLoadMore: false,
       dataSource: this.ds.cloneWithRows(this.listViewData)
     }
   }
@@ -91,11 +92,19 @@ class TabListPage extends Component {
    * 加载更多
    * */
   _loadMore() {
-    let loadMoreData = Array(20).fill('').map((_, i) => `load item #${i + this.listViewData.length}`);
-    this.listViewData = this.listViewData.concat(loadMoreData);
+    this.setState({
+      isLoadMore: true
+    });
     setTimeout(() => {
+      let loadMoreData = Array(20).fill('').map((_, i) => `load item #${i + this.listViewData.length}`);
+      //注意此处，因为文本都是string的，如果string都相同，那么会导致list判断，数据都是一样的，不更新ui
+      //所以，需要用listViewData的长度，
+      this.listViewData = this.listViewData.concat(loadMoreData);
       this.setState({
         dataSource: this.ds.cloneWithRows(this.listViewData)
+      });
+      this.setState({
+        isLoadMore: false,
       });
     }, 5000);
   }
@@ -126,12 +135,37 @@ class TabListPage extends Component {
     modal.open();
   }
 
+  /**
+   * 通过context引用
+   * */
+  getChildContext() {
+    return {
+      modalOpen: () => {
+        this.refs.modal.open();
+      }
+    };
+  }
+
+  /**
+   * 配置getChildContext，必须静态
+   * 子控件还需要配置contextTypes
+   * 然后子控件即可通过this.context引用父空间的方法等
+   * */
+  static childContextTypes = {
+    modalOpen: React.PropTypes.func.isRequired,
+  };
+
+
   render() {
     return (
       <View style={styles.container}>
         <SwipeListView
           removeClippedSubviews={false}//配合swiper使用，不设置的话，作为listview的header会不被绘制
           ref="list"
+          //每一页加载的数量
+          initialListSize={20}
+          pageSize={20}
+          onEndReachedThreshold={20}
           refreshControl={<RefreshControl
              refreshing={this.state.isRefresh}
              onRefresh={this._refresh.bind(this)}
@@ -146,7 +180,6 @@ class TabListPage extends Component {
           dataSource={this.state.dataSource}
           renderHeader={this._renderHeader.bind(this)}
           renderFooter={this._renderFooter.bind(this)}
-
           onEndReached={this._loadMore.bind(this)}
         />
 

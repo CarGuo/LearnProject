@@ -24,7 +24,7 @@ class Page2 extends Component {
 
 //
 export default connect(state => ({
-    state: state.counter //这个是reducers/index下的counter,关联page的state
+    state: state.counter //这个是reducers/index下的counter,关联page的props中的state
   }),
   //把
   (dispatch) => ({
