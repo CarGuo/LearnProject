@@ -6,7 +6,10 @@ import React, {Component} from 'react';
 import {
     AppRegistry,
     View,
-    Text
+    Text,
+    TouchableHighlight,
+    Platform,
+    ToastAndroid
 } from 'react-native';
 
 import styles from './jscode/style/styles'
@@ -42,12 +45,31 @@ export default class detail extends Component {
         );
     }
 
+    /**
+     * 列表item点击
+     * */
+    _clickItem() {
+        DetailModule.startActivityByRN('这是传递过来的参数！', '那么巧，我也是传递的。',
+            '楼上，我是第三个呢！！！', '那么说我是第四个咯？皮皮虾，我们走。',
+            (text) => {
+                if (text)
+                    ToastAndroid.show('receive data from detail activity ' + text, 2000);
+            },
+            (error) => {
+                if (error)
+                    ToastAndroid.show('error data from detail activity ' + error, 2000);
+            }
+        );
+
+    }
 
     render() {
         return (
             <View style={styles.container}>
                 <View style={{flex: 1, justifyContent:'center', alignItems: 'center'}}>
-                    <Text>{this.state.text1}</Text>
+                    <TouchableHighlight onPress={this._clickItem.bind(this)}>
+                        <Text>{this.state.text1}</Text>
+                    </TouchableHighlight>
                 </View>
                 <View style={{flex: 1, justifyContent:'center', alignItems: 'center'}}>
                     <Text>{this.state.text2}</Text>
