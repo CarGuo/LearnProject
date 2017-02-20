@@ -16,6 +16,8 @@ import com.oblador.vectoricons.VectorIconsPackage;
 import java.util.Arrays;
 import java.util.List;
 
+import com.learnproject.rnpackage.DetailPackage;
+
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
@@ -30,7 +32,8 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new RNSpinkitPackage(),
             new PhotoViewPackage(),
-            new VectorIconsPackage()
+            new VectorIconsPackage(),
+            new DetailPackage()
       );
     }
   };

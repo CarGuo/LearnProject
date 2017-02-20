@@ -14,6 +14,8 @@ import {
   ActivityIndicator
 } from 'react-native';
 
+import { NativeModules } from 'react-native';
+
 import ListViewItem from './widget/listItem';
 import Slider from './widget/slide';
 
@@ -22,6 +24,8 @@ import ModalBox from 'react-native-modalbox';
 import Spinner from 'react-native-spinkit';
 
 import styles from '../style/styles';
+
+const { DetailModule } = NativeModules;
 
 
 class TabListPage extends Component {
@@ -131,8 +135,14 @@ class TabListPage extends Component {
    * 列表item点击
    * */
   _clickItem(rowId) {
-    let modal = (rowId % 2 === 0) ? this.refs.modal : this.refs.modalLoad;
-    modal.open();
+      let modal = (rowId % 2 === 0) ? this.refs.modal : this.refs.modalLoad;
+
+      if (rowId % 3 === 0) {
+          DetailModule.startActivityByRN();
+      } else {
+          modal.open();
+      }
+
   }
 
   /**

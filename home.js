@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 
 import configureStore from './jscode/store/index';
 
+import detail from './detail'
 
 let store = configureStore();
 
@@ -34,3 +35,6 @@ class home extends Component {
 }
 
 export default home;
+
+//将需要打开的activity关联的js注册进来
+AppRegistry.registerComponent('detail', () => detail);
