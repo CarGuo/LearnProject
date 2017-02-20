@@ -2,7 +2,7 @@
  * Created by guoshuyu on 2017/2/20.
  */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
     AppRegistry,
     View,
@@ -11,8 +11,8 @@ import {
 
 import styles from './jscode/style/styles'
 
-import { NativeModules } from 'react-native';
-const { DetailModule } = NativeModules;
+import {NativeModules} from 'react-native';
+const {DetailModule} = NativeModules;
 
 export default class detail extends Component {
     constructor(props) {
@@ -26,12 +26,19 @@ export default class detail extends Component {
         }
     }
 
-    componentDidMount(){   //这是React的生命周期函数，会在界面加载完成后执行一次
+    componentDidMount() {   //这是React的生命周期函数，会在界面加载完成后执行一次
         DetailModule.getDataFromIntent(
-            (successMsg) =>{
-                this.setState({text1: successMsg,}); //状态改变的话重新绘制界面
+            (successMsg1, successMsg2, successMsg3, successMsg4) => {
+                this.setState({
+                    text1: successMsg1,
+                    text2: successMsg2,
+                    text3: successMsg3,
+                    text4: successMsg4,
+                }); //状态改变的话重新绘制界面
             },
-            (errorMsg) => {alert(errorMsg)}
+            (errorMsg) => {
+                alert(errorMsg)
+            }
         );
     }
 

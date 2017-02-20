@@ -138,7 +138,8 @@ class TabListPage extends Component {
       let modal = (rowId % 2 === 0) ? this.refs.modal : this.refs.modalLoad;
 
       if (rowId % 3 === 0 && Platform.OS == 'android') {
-          DetailModule.startActivityByRN('这是传递过来的参数！');
+          DetailModule.startActivityByRN('这是传递过来的参数！', '那么巧，我也是传递的。',
+              '楼上，我是第三个呢！！！', '那么说我是第四个咯？皮皮虾，我们走。');
       } else {
           modal.open();
       }
