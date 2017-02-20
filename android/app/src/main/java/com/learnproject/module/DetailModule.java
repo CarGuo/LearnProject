@@ -117,5 +117,5 @@ public class DetailModule extends ReactContextBaseJavaModule implements Activity
             successCallBack.remove(successCallBack.size() - 1);
         }
     }
-    
+
 }
