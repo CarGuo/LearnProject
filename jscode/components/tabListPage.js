@@ -137,8 +137,8 @@ class TabListPage extends Component {
   _clickItem(rowId) {
       let modal = (rowId % 2 === 0) ? this.refs.modal : this.refs.modalLoad;
 
-      if (rowId % 3 === 0) {
-          DetailModule.startActivityByRN();
+      if (rowId % 3 === 0 && Platform.OS == 'android') {
+          DetailModule.startActivityByRN('这是传递过来的参数！');
       } else {
           modal.open();
       }
