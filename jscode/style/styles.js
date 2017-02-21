@@ -15,7 +15,7 @@ export const androidNav = 50;
 export const tabBarHeight = 44;
 export const tabIconSize = 20;
 
-export const listItemHeight = 50;
+export const listItemHeight = 60;
 
 export const slideItemHeight = 240;
 
