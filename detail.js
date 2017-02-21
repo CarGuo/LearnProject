@@ -32,6 +32,7 @@ export default class detail extends Component {
             text4: 'detail, default  text 4',
             progress: new Animated.Value(0),
         }
+        this.thisUnmount = false;
     }
 
     /**
@@ -55,12 +56,26 @@ export default class detail extends Component {
         this.startAnimation();
     }
 
+    componentWillUnMount() {
+        console.log("componentWillUnMount!!!");
+        this.thisUnmount = true;
+        this.refs.AnimateCom.reset();
+    }
+
     startAnimation() {
+        if (this.thisUnmount) {
+            return;
+        }
         Animated.timing(this.state.progress, {
             toValue: 1,
             duration: 5000,
             easing: Easing.linear
-        }).start(() => {
+        }).start(({ finished }) => {
+            console.log("had finished " + finished);
+            if (!finished) {
+                return;
+            }
+            console.log("restart");
             //重复播放
             this.setState({
                 progress: new Animated.Value(0),
@@ -106,6 +121,7 @@ export default class detail extends Component {
                 </View>
                 <View style={{justifyContent:'center', alignItems: 'center'}}>
                     <Animation
+                        ref="AnimateCom"
                         style={{
                       width: 200,
                       height: 200,
