@@ -10,7 +10,8 @@ import {
     TouchableHighlight,
     Platform,
     ToastAndroid,
-    Animated
+    Animated,
+    Easing
 } from 'react-native';
 
 import styles from './jscode/style/styles'
@@ -51,10 +52,21 @@ export default class detail extends Component {
             }
         );
 
+        this.startAnimation();
+    }
+
+    startAnimation() {
         Animated.timing(this.state.progress, {
             toValue: 1,
             duration: 5000,
-        }).start();
+            easing: Easing.linear
+        }).start(() => {
+            //重复播放
+            this.setState({
+                progress: new Animated.Value(0),
+            })
+            this.startAnimation()
+        });
     }
 
     /**
