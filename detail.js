@@ -9,10 +9,13 @@ import {
     Text,
     TouchableHighlight,
     Platform,
-    ToastAndroid
+    ToastAndroid,
+    Animated
 } from 'react-native';
 
 import styles from './jscode/style/styles'
+
+import Animation from 'lottie-react-native';
 
 import {NativeModules} from 'react-native';
 const {DetailModule} = NativeModules;
@@ -26,6 +29,7 @@ export default class detail extends Component {
             text2: 'detail, default  text 2',
             text3: 'detail, default  text 3',
             text4: 'detail, default  text 4',
+            progress: new Animated.Value(0),
         }
     }
 
@@ -46,11 +50,16 @@ export default class detail extends Component {
                 alert(errorMsg)
             }
         );
+
+        Animated.timing(this.state.progress, {
+            toValue: 1,
+            duration: 5000,
+        }).start();
     }
 
-   /**
-    * 打开一个新的Activity，传递参数，页面销毁返回数据。
-    * */
+    /**
+     * 打开一个新的Activity，传递参数，页面销毁返回数据。
+     * */
     _clickItem() {
         DetailModule.startActivityByRN('这是传递过来的参数！', '那么巧，我也是传递的。',
             '楼上，我是第三个呢！！！', '那么说我是第四个咯？皮皮虾，我们走。',
@@ -82,6 +91,16 @@ export default class detail extends Component {
                 </View>
                 <View style={{flex: 1, justifyContent:'center', alignItems: 'center'}}>
                     <Text>{this.state.text4}</Text>
+                </View>
+                <View style={{justifyContent:'center', alignItems: 'center'}}>
+                    <Animation
+                        style={{
+                      width: 200,
+                      height: 200,
+                    }}
+                        source={require('./jscode/img/path/LottieLogo1.json')}
+                        progress={this.state.progress}
+                    />
                 </View>
             </View>);
 
