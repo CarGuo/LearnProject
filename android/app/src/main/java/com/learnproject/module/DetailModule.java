@@ -25,11 +25,13 @@ public class DetailModule extends ReactContextBaseJavaModule implements Activity
 
     private final ReactApplicationContext reactContext;
 
+    //保存打开的activity，js里的回调接口
     private List<Callback> successCallBack = new ArrayList<>();
 
     public DetailModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
+        //注册activity的打开和返回监听，用于activity返回的时候回调
         reactContext.addActivityEventListener(this);
     }
 
@@ -111,6 +113,7 @@ public class DetailModule extends ReactContextBaseJavaModule implements Activity
 
     }
 
+    //输出回调
     private void callLogic(String string) {
         if (successCallBack.size() > 0) {
             successCallBack.get(successCallBack.size() - 1).invoke(string);

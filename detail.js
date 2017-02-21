@@ -29,6 +29,9 @@ export default class detail extends Component {
         }
     }
 
+    /**
+     * 获取上一个Activity传递过来的数据
+     * */
     componentDidMount() {   //这是React的生命周期函数，会在界面加载完成后执行一次
         DetailModule.getDataFromIntent(
             (successMsg1, successMsg2, successMsg3, successMsg4) => {
@@ -45,9 +48,9 @@ export default class detail extends Component {
         );
     }
 
-    /**
-     * 列表item点击
-     * */
+   /**
+    * 打开一个新的Activity，传递参数，页面销毁返回数据。
+    * */
     _clickItem() {
         DetailModule.startActivityByRN('这是传递过来的参数！', '那么巧，我也是传递的。',
             '楼上，我是第三个呢！！！', '那么说我是第四个咯？皮皮虾，我们走。',
@@ -84,4 +87,3 @@ export default class detail extends Component {
 
     }
 }
-AppRegistry.registerComponent('detail', () => detail);
