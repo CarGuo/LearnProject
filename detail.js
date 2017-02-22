@@ -88,8 +88,7 @@ export default class detail extends Component {
      * 打开一个新的Activity，传递参数，页面销毁返回数据。
      * */
     _clickItem() {
-        DetailModule.startActivityByRN('这是传递过来的参数！', '那么巧，我也是传递的。',
-            '楼上，我是第三个呢！！！', '那么说我是第四个咯？皮皮虾，我们走。',
+        DetailModule.startActivitySingle(
             (text) => {
                 if (text)
                     ToastAndroid.show('receive data from detail activity ' + text, 2000);
