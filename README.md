@@ -1,11 +1,10 @@
 ## 本项目是关于React Native相关的学习项目，目前处于开发阶段，且ios还没适配。
 
 
-<img src="https://github.com/CarGuo/learnProject/blob/master/01.jpg" width="240px" height="426px"/>
+![](https://github.com/CarGuo/learnProject/blob/master/01.jpg)
+![](https://github.com/CarGuo/learnProject/blob/master/02.jpg)
+![](https://github.com/CarGuo/learnProject/blob/master/03.gif)
 
-<img src="https://github.com/CarGuo/learnProject/blob/master/02.jpg" width="240px" height="426px"/>
-
-<img src="https://github.com/CarGuo/learnProject/blob/master/03.gif" width="360px" height="240px"/>
 
 ### 说明
 
