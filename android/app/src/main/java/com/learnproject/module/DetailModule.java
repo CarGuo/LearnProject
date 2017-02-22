@@ -84,12 +84,27 @@ public class DetailModule extends ReactContextBaseJavaModule implements Activity
         try {
             Activity currentActivity = getCurrentActivity();
             if (null != currentActivity) {
-               /* Intent intent = new Intent(currentActivity, DetailActivity.class);
+                Intent intent = new Intent(currentActivity, DetailActivity.class);
                 intent.putExtra("result_text1", text1);
                 intent.putExtra("result_text2", text2);
                 intent.putExtra("result_text3", text3);
                 intent.putExtra("result_text4", text4);
-                currentActivity.startActivityForResult(intent, 1100);*/
+                currentActivity.startActivityForResult(intent, 1100);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            errorBack.invoke(e.getMessage());
+        }
+
+    }
+
+    //定义一个react native 调用的方法
+    @ReactMethod
+    public void startActivitySingle(final Callback successBack, final Callback errorBack) {
+        successCallBack.add(successBack);
+        try {
+            Activity currentActivity = getCurrentActivity();
+            if (null != currentActivity) {
                 Intent intent = new Intent(currentActivity, SingleActivity.class);
                 currentActivity.startActivity(intent);
             }
