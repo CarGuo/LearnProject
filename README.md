@@ -1,11 +1,6 @@
 ## 本项目是关于React Native相关的学习项目，目前处于开发阶段，且ios还没适配。
 
 
-![](https://github.com/CarGuo/learnProject/blob/master/01.jpg)
-![](https://github.com/CarGuo/learnProject/blob/master/02.jpg)
-![](https://github.com/CarGuo/learnProject/blob/master/03.gif)
-
-
 ### 说明
 
 本项目后面会有相关的RN入门和项目介绍的文章，还有开发中的一些问题处理，第三方框架注意事项等，欢迎交流。
@@ -39,3 +34,8 @@
 
 * 与原生Activity双向交互。
 * 动态加载下载的js显示运行。
+
+
+![](https://github.com/CarGuo/learnProject/blob/master/03.gif)
+![](https://github.com/CarGuo/learnProject/blob/master/01.jpg)
+![](https://github.com/CarGuo/learnProject/blob/master/02.jpg)
