@@ -18,6 +18,7 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.learnproject.DetailActivity;
 import com.learnproject.MainActivity;
+import com.learnproject.SingleActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -83,12 +84,14 @@ public class DetailModule extends ReactContextBaseJavaModule implements Activity
         try {
             Activity currentActivity = getCurrentActivity();
             if (null != currentActivity) {
-                Intent intent = new Intent(currentActivity, DetailActivity.class);
+               /* Intent intent = new Intent(currentActivity, DetailActivity.class);
                 intent.putExtra("result_text1", text1);
                 intent.putExtra("result_text2", text2);
                 intent.putExtra("result_text3", text3);
                 intent.putExtra("result_text4", text4);
-                currentActivity.startActivityForResult(intent, 1100);
+                currentActivity.startActivityForResult(intent, 1100);*/
+                Intent intent = new Intent(currentActivity, SingleActivity.class);
+                currentActivity.startActivity(intent);
             }
         } catch (Exception e) {
             e.printStackTrace();

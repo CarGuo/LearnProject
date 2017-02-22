@@ -36,6 +36,10 @@
             android:name=".DetailActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".SingleActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" />
         <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
     </application>
 
