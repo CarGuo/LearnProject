@@ -103,20 +103,20 @@ export default class detail extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={[styles.container, {backgroundColor: '#000000'}]}>
                 <View style={{flex: 1, justifyContent:'center', alignItems: 'center'}}>
                     <TouchableHighlight onPress={this._clickItem.bind(this)}>
-                        <Text>{this.state.text1}</Text>
+                        <Text style={{color:'#ffffff'}}>{this.state.text1}</Text>
                     </TouchableHighlight>
                 </View>
                 <View style={{flex: 1, justifyContent:'center', alignItems: 'center'}}>
-                    <Text>{this.state.text2}</Text>
+                    <Text style={{color:'#ffffff'}}>{this.state.text2}</Text>
                 </View>
                 <View style={{flex: 1, justifyContent:'center', alignItems: 'center'}}>
-                    <Text>{this.state.text2}</Text>
+                    <Text style={{color:'#ffffff'}}>{this.state.text2}</Text>
                 </View>
                 <View style={{flex: 1, justifyContent:'center', alignItems: 'center'}}>
-                    <Text>{this.state.text4}</Text>
+                    <Text style={{color:'#ffffff'}}>{this.state.text4}</Text>
                 </View>
                 <View style={{justifyContent:'center', alignItems: 'center'}}>
                     <Animation
