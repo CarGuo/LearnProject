@@ -2,19 +2,25 @@
 package com.learnproject.module;
 
 import com.facebook.react.bridge.ActivityEventListener;
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.learnproject.DetailActivity;
 import com.learnproject.MainActivity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -105,12 +111,25 @@ public class DetailModule extends ReactContextBaseJavaModule implements Activity
             } else {
                 callLogic("无数据传回");
             }
+
+            WritableMap params = Arguments.createMap();
+            HashMap<String, String> hashMap = new HashMap<>();
+            params.putString("result", "我是通过Detail消息推送过来的！");
+            sendEvent(reactContext, "backFromDetail", params);
         }
     }
 
     @Override
     public void onNewIntent(Intent intent) {
 
+    }
+
+    private void sendEvent(ReactContext reactContext,
+                           String eventName,
+                           @Nullable WritableMap params) {
+        reactContext
+                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+                .emit(eventName, params);
     }
 
     //输出回调

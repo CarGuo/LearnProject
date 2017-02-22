@@ -12,7 +12,8 @@ import {
     TouchableHighlight,
     Platform,
     ActivityIndicator,
-    ToastAndroid
+    ToastAndroid,
+    DeviceEventEmitter
 } from 'react-native';
 
 import {NativeModules} from 'react-native';
@@ -23,6 +24,7 @@ import Slider from './widget/slide';
 import {SwipeListView, SwipeRow} from 'react-native-swipe-list-view';
 import ModalBox from 'react-native-modalbox';
 import Spinner from 'react-native-spinkit';
+
 
 import styles from '../style/styles';
 
@@ -46,6 +48,21 @@ class TabListPage extends Component {
             dataSource: this.ds.cloneWithRows(this.listViewData)
         }
     }
+
+    componentDidMount() {
+        this.subscription = DeviceEventEmitter.addListener('backFromDetail',(msg) => {
+            if (Platform.OS == 'android') {
+                ToastAndroid.show(msg.result, 2000);
+            }
+        })
+    }
+
+    //移除DeviceEventEmitter
+    componentWillUnmount() {
+        // 移除
+        this.subscription.remove();
+    }
+
 
     /**
      * 绘制List的item
