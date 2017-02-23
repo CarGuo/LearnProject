@@ -3,6 +3,7 @@ package com.learnproject;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.KeyEvent;
 import android.widget.Toast;
 
 import com.airbnb.android.react.lottie.LottiePackage;
@@ -10,6 +11,7 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
 import com.facebook.react.bridge.NativeModuleCallExceptionHandler;
 import com.facebook.react.common.LifecycleState;
+import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
 import com.learnproject.rnpackage.DetailPackage;
 import com.learnproject.utils.Contants;
@@ -24,7 +26,7 @@ import cn.finalteam.okhttpfinal.HttpRequest;
  * Created by guoshuyu on 2017/2/22.
  */
 
-public class SingleActivity extends Activity {
+public class SingleActivity extends Activity implements DefaultHardwareBackBtnHandler {
 
     ReactRootView mReactRootView;
 
@@ -32,7 +34,7 @@ public class SingleActivity extends Activity {
 
     LoadingDialog mLoadingDialog;
 
-    //todo 记得把项目根目录下的 android.bundle 放到手机的根目录下。
+    //todo 记得把项目根目录下的 android.bundle 放到手机的根目录下。因为网络url估计失效了
     String path = Environment.getExternalStorageDirectory().getPath() + "/android.bundle";
 
     @Override
@@ -53,6 +55,58 @@ public class SingleActivity extends Activity {
 
             downLoadBundle(Contants.URL, path);
         }
+    }
+
+    @Override
+    public void invokeDefaultOnBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if (mReactInstanceManager != null) {
+            mReactInstanceManager.onHostPause(this);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (mReactInstanceManager != null) {
+            mReactInstanceManager.onHostResume(this, this);
+        }
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (mReactInstanceManager != null) {
+            mReactInstanceManager.onHostDestroy(this);
+        }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        if (mReactInstanceManager != null) {
+            mReactInstanceManager.onBackPressed();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_MENU && mReactInstanceManager != null) {
+            mReactInstanceManager.showDevOptionsDialog();
+            return true;
+        }
+        return super.onKeyUp(keyCode, event);
     }
 
 
@@ -101,16 +155,17 @@ public class SingleActivity extends Activity {
                     .setNativeModuleCallExceptionHandler(new NativeModuleCallExceptionHandler() {
                         @Override
                         public void handleException(Exception e) {
+                            e.printStackTrace();
                         }
                     })
                     .addPackage(new DetailPackage())
                     .addPackage(new MainReactPackage())
                     .addPackage(new LottiePackage())
-                    .setJSMainModuleName("detail")
+                    .setJSMainModuleName("learnProject")//
                     .setUseDeveloperSupport(false)
                     .setInitialLifecycleState(LifecycleState.RESUMED)
                     .build();
-            mReactRootView.startReactApplication(mReactInstanceManager, "detail", null);//启动入口
+            mReactRootView.startReactApplication(mReactInstanceManager, "learnProject", null);//启动入口
         } else {
             Toast.makeText(this, "请把项目根目录下的 android.bundle 放到手机的根目录下。", Toast.LENGTH_LONG).show();
         }
