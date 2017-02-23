@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.facebook.react.ReactActivity;
@@ -26,6 +27,21 @@ public class DetailActivity extends ReactActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         i++;
+        Log.e("DetailActivity  " , "DetailActivity onCreate ");
+    }
+
+    @Override
+    public void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+
+        Log.e("DetailActivity  " , "DetailActivity Intent ");
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e("DetailActivity  " , "DetailActivity onDestroy ");
     }
 
     /**
@@ -42,9 +58,12 @@ public class DetailActivity extends ReactActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
-        intent.putExtra("result", "我是传说中的返回数据 " + i--);
-        setResult(Activity.RESULT_OK, intent);
+        //intent.putExtra("result", "我是传说中的返回数据 " + i--);
+        //setResult(Activity.RESULT_OK, intent);
 
-        super.onBackPressed();
+        //super.onBackPressed();
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        intent.setClass(this, MainActivity.class);
+        startActivity(intent);
     }
 }

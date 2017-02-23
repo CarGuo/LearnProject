@@ -1,7 +1,9 @@
 package com.learnproject;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.facebook.react.ReactActivity;
@@ -11,8 +13,26 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 public class MainActivity extends ReactActivity {
 
-    //构建一个阻塞的单一数据的队列
-    public static ArrayBlockingQueue<String> mQueue = new ArrayBlockingQueue<String>(1);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        Log.e("MainActivity  " , "MainActivity onCreate ");
+    }
+
+    @Override
+    public void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+
+        Log.e("MainActivity  " , "MainActivity Intent ");
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e("MainActivity  " , "MainActivity onDestroy ");
+    }
 
     /**
      * Returns the name of the main component registered from JavaScript.

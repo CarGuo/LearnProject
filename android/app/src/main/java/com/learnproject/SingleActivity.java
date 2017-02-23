@@ -15,6 +15,7 @@ import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
 import com.learnproject.rnpackage.DetailPackage;
 import com.learnproject.utils.Contants;
+import com.reactnative.photoview.PhotoViewPackage;
 import com.xiasuhuei321.loadingdialog.view.LoadingDialog;
 
 import java.io.File;
@@ -24,6 +25,11 @@ import cn.finalteam.okhttpfinal.HttpRequest;
 
 /**
  * Created by guoshuyu on 2017/2/22.
+ *
+ * 主要测试的加载远程js bundle 到本地
+ *
+ * 需要注意是否支持原生代码在已经在Main那里注册了，这里是否支持用package使用。
+ * 需要注意命名空间是否会重复问题。
  */
 
 public class SingleActivity extends Activity implements DefaultHardwareBackBtnHandler {
@@ -161,6 +167,7 @@ public class SingleActivity extends Activity implements DefaultHardwareBackBtnHa
                     .addPackage(new DetailPackage())
                     .addPackage(new MainReactPackage())
                     .addPackage(new LottiePackage())
+                    .addPackage(new PhotoViewPackage())
                     .setJSMainModuleName("learnProject")//
                     .setUseDeveloperSupport(false)
                     .setInitialLifecycleState(LifecycleState.RESUMED)
