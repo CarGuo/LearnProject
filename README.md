@@ -8,7 +8,7 @@
 
 **[1、从Android到React Native开发（一、入门）](http://www.jianshu.com/p/97692b1c451d)**
 
-**[从Android到React Native开发（二、通信与模块实现）](http://www.jianshu.com/p/bec040926db8)**
+**[2、从Android到React Native开发（二、通信与模块实现）](http://www.jianshu.com/p/bec040926db8)**
 
 ---------------------------------------------
 
