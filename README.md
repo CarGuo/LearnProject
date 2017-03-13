@@ -32,6 +32,7 @@
 * [react-native-modalbox](https://github.com/maxs15/react-native-modalbox)
 * [react-native-spinkit](https://github.com/maxs15/react-native-spinkit)
 * [lottie-react-native](https://github.com/airbnb/lottie-react-native)
+* [react-native-audio](https://github.com/CarGuo/react-native-audio)
 
 
 * 与原生Activity双向交互。

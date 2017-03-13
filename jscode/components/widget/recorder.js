@@ -17,7 +17,7 @@ export default class Recorder extends Component {
 
         this.onButtonPressIn = this.onButtonPressIn.bind(this);
         this.onButtonPressOut = this.onButtonPressOut.bind(this);
-
+        this.mill = 0;
         //设置state
         this.state = {
             currentTime: 0.0,
@@ -50,7 +50,7 @@ export default class Recorder extends Component {
             AudioRecorder.onFinished = (data) => {
                 // Android callback comes in the form of a promise instead.
                 if (Platform.OS === 'ios') {
-                    alert(data.audioFileURL);
+                    //alert(this.mill + ' path: ' + data.audioFileURL);
                     //this._finishRecording(data.status === "OK", data.audioFileURL);
                 }
             };
@@ -97,7 +97,7 @@ export default class Recorder extends Component {
             const filePath = await AudioRecorder.stopRecording();
 
             if (Platform.OS === 'android') {
-                alert(filePath);
+                //alert(this.mill + ' path: ' + filePath);
                 //this._finishRecording(true, filePath);
             }
             return filePath;
@@ -132,6 +132,7 @@ export default class Recorder extends Component {
 
     onButtonPressIn() {
         this._record();
+        this.recordTime = (new Date()).valueOf();
         this.setState({
             shareModalVisible: true
         });
@@ -139,9 +140,19 @@ export default class Recorder extends Component {
 
     onButtonPressOut() {
         this._stop();
+        let endTime =  (new Date()).valueOf();
+        //差值
+        let time = endTime - this.recordTime;
+
+        this.mill = time / (1000);
+
         this.setState({
             shareModalVisible: false
         });
+
+        if (this.mill < 1) {
+            alert("时间太短了")
+        }
     }
 
     render() {
@@ -160,9 +171,10 @@ export default class Recorder extends Component {
                        visible={this.state.shareModalVisible}
                        onShow={() => console.log('onShow...')}>
                     <View style={[styles.overlayBox,styles.translucentBg,styles.defaultPageContainer]}>
-                        <View style={[styles.blankBackgroundColor,{width:300,borderRadius:10,}]}>
-                            <Text style={{alignItems:'center', justifyContent:'center'}}>
-                                {"当前大小 " + this.state.voiceLevel}
+                        <View style={[styles.blankBackgroundColor,
+                        {width:300, height: 300, borderRadius:10}, styles.centered]}>
+                            <Text style={styles.centered}>
+                                {"声音大小 " + this.state.voiceLevel}
                             </Text>
                         </View>
                     </View>
