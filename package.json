@@ -10,6 +10,7 @@
     "lottie-react-native": "^1.0.6",
     "react": "15.4.2",
     "react-native": "0.41.2",
+    "react-native-audio": "git+ssh://git@github.com/CarGuo/react-native-audio.git",
     "react-native-meteor": "^1.0.3",
     "react-native-modalbox": "^1.3.9",
     "react-native-photo-view": "^1.2.0",
