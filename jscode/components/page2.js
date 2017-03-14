@@ -4,6 +4,7 @@ import {View} from 'react-native';
 import {bindActionCreators} from 'redux';
 import Counter from '../components/widget/counter';
 import Record from '../components/widget/recorder';
+import GridCount from '../components/widget/gridCount';
 import * as counterActions from '../actions/counter';
 import {connect} from 'react-redux';
 import styles from '../style/styles'
@@ -38,6 +39,7 @@ class Page2 extends Component {
             <View style={styles.container}>
                 {counter}
                 {recorder}
+                <GridCount/>
             </View>
         );
     }
