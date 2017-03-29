@@ -8,6 +8,7 @@ import GridCount from '../components/widget/gridCount';
 import * as counterActions from '../actions/counter';
 import {connect} from 'react-redux';
 import styles from '../style/styles'
+import Autolink from 'react-native-autolink';
 
 class Page2 extends Component {
 
@@ -40,6 +41,10 @@ class Page2 extends Component {
                 {counter}
                 {recorder}
                 <GridCount/>
+                <Autolink
+                    text="This 😖😖 is the string to parse for urls (https://github.com/joshswan/react-native-autolink), phone numbers (415-555-5555), emails (josh@sportifik.com), mentions/handles (@twitter), and hashtags (#exciting)"
+                    hashtag="instagram"
+                    mention="twitter" />
             </View>
         );
     }

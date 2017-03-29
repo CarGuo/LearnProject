@@ -34,6 +34,7 @@
 * [lottie-react-native](https://github.com/airbnb/lottie-react-native)
 * [react-native-audio](https://github.com/CarGuo/react-native-audio)
 * [react-native-easy-grid](https://github.com/GeekyAnts/react-native-easy-grid)
+* [react-native-autolink](https://github.com/joshswan/react-native-autolink)
 
 
 * 与原生Activity双向交互。
