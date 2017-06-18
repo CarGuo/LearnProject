@@ -150,6 +150,10 @@ export default StyleSheet.create({
         backgroundColor: "#fff"
     },
 
+    transparentBg: {
+        backgroundColor: "transparent"
+    },
+
     defaultPageContainer: {
         flex: 1,
         justifyContent: "center",
