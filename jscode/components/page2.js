@@ -42,7 +42,7 @@ class Page2 extends Component {
                 {recorder}
                 <GridCount/>
                 <Autolink
-                    text="This 😖😖 is the string to parse for urls (https://github.com/joshswan/react-native-autolink), phone numbers (415-555-5555), emails (josh@sportifik.com), mentions/handles (@twitter), and hashtags (#exciting)"
+                    text="This 😖😖 is the string to parse for urls (https://github.com/CarGuo), phone numbers (415-555-5555), emails (josh@sportifik.com), mentions/handles (@twitter), and hashtags (#exciting)"
                     hashtag="instagram"
                     mention="twitter" />
             </View>
