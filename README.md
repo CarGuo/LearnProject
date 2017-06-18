@@ -1,4 +1,4 @@
-## 本项目是关于React Native相关的学习项目，目前处于开发阶段，且ios还没适配。
+## 本项目是关于React Native相关的学习项目，不定时更新学习，欢迎交流讨论。
 
 
 ### 说明
@@ -9,6 +9,8 @@
 **[1、从Android到React Native开发（一、入门）](http://www.jianshu.com/p/97692b1c451d)**
 
 **[2、从Android到React Native开发（二、通信与模块实现）](http://www.jianshu.com/p/bec040926db8)**
+
+**[3、从Android到React Native开发（三、自定义原生控件支持）](http://www.jianshu.com/p/a488674d55b3)**
 
 ---------------------------------------------
 
@@ -37,8 +39,8 @@
 * [react-native-autolink](https://github.com/joshswan/react-native-autolink)
 
 
-* 与原生Activity双向交互。
-* 动态加载下载的js显示运行。
+* 与原生Activity双向交互。（仅Android）
+* 动态加载下载的js显示运行。（仅Android）
 
 
 ![](https://github.com/CarGuo/learnProject/blob/master/03.gif)
