@@ -25,7 +25,7 @@ export default class Recorder extends Component {
             stoppedRecording: false,
             finished: false,
             hasPermission: undefined,
-            audioPath: AudioUtils.MusicDirectoryPath + '/test.amr',
+            audioPath: AudioUtils.DocumentDirectoryPath + '/test.amr',
             voiceLevel: 0,
             shareModalVisible: false
 
@@ -37,6 +37,8 @@ export default class Recorder extends Component {
             this.setState({hasPermission});
 
             if (!hasPermission) return;
+
+            console.log('************ hadPermission ************')
 
             this.prepareRecordingPath(this.state.audioPath);
 
@@ -161,7 +163,7 @@ export default class Recorder extends Component {
                 <TouchableOpacity style={styles.button}
                                   onPressIn={ this.onButtonPressIn}
                                   onPressOut={ this.onButtonPressOut}>
-                    <Text style={styles.button}> 录音 </Text>
+                    <Text style={styles.button}> 按下录音，不支持模拟器 </Text>
 
                 </TouchableOpacity>
 
