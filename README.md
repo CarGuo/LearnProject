@@ -5,6 +5,7 @@
 
 本项目后面会有相关的RN入门和项目介绍的文章，还有开发中的一些问题处理，第三方框架注意事项等，欢迎交流。
 
+**[0、全新的学习项目 GSYGithubApp](https://github.com/CarGuo/GSYGithubAPP)**
 
 **[1、从Android到React Native开发（一、入门）](http://www.jianshu.com/p/97692b1c451d)**
 
