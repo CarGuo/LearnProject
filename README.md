@@ -41,6 +41,7 @@
 
 * 与原生Activity双向交互。（仅Android）
 * 动态加载下载的js显示运行。（仅Android）
+* 动态打包react native项目为aar。（仅Android）
 
 
 ![](https://ooo.0o0.ooo/2017/06/18/5946390d5671a.gif)
