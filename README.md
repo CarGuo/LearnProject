@@ -12,6 +12,9 @@
 
 **[3、从Android到React Native开发（三、自定义原生控件支持）](http://www.jianshu.com/p/a488674d55b3)**
 
+**[4、从Android到React Native开发（四、打包流程和发布为Maven库）](https://www.jianshu.com/p/f0aeaccc07a7)**
+
+
 ---------------------------------------------
 
 ### 为什么要有这个项目
