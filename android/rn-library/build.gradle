@@ -1,0 +1,60 @@
+apply plugin: 'com.android.library'
+
+group "com.shuyu.rn"
+
+version '1.0.0'
+
+
+project.ext.react = [
+        jsBundleDirRelease : "$buildDir/intermediates/bundles/release/assets",
+        resourcesDirRelease: "$buildDir/intermediates/bundles/release/res",
+]
+
+//引入react脚本
+apply from: "../../node_modules/react-native/react.gradle"
+apply from: "fat-aar.gradle"
+
+android {
+
+    compileSdkVersion 23
+
+    buildToolsVersion "23.0.1"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile "com.android.support:appcompat-v7:23.0.1"
+
+    embedded project(':react-native-audio')
+    embedded project(':lottie-react-native')
+    embedded project(':react-native-spinkit')
+    embedded project(':react-native-vector-icons')
+    embedded project(':react-native-photo-view')
+    compile fileTree(dir: "libs", include: ["*.jar"])
+
+    embedded "com.facebook.react:react-native:+"  // From node_modules
+    // 如果你需要支持GIF动图
+    embedded 'com.facebook.fresco:animated-gif:0.11.0'
+}
+
+apply from: "publish.gradle"
