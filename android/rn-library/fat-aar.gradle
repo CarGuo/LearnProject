@@ -488,7 +488,7 @@ task generateRJava {
         }
 
 
-        def rClassFile = file("$generated_rsrc_dir/com/ygsoft/chat/R.java")
+        def rClassFile = file("$generated_rsrc_dir/com/shuyu/rn/R.java")
         def rClassMap = new ConfigObject()
 
         def subClassName = null
