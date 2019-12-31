@@ -15,7 +15,7 @@
 **[4、从Android到React Native开发（四、打包流程和发布为Maven库）](https://www.jianshu.com/p/f0aeaccc07a7)**
 
 
-![公众号](http://img.cdn.guoshuyu.cn/WechatIMG3024.jpeg)
+![公众号](http://img.cdn.guoshuyu.cn/WeChat-Code)
 
 ---------------------------------------------
 
